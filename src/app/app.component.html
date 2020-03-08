@@ -1,0 +1,34 @@
+<div class="jumbotron text-center">
+  <h1 class="display-5">
+    Angular Nested Form
+  </h1>
+</div>
+
+<div class="container">
+  <div class="row custom-wrapper">
+    <div class="col-md-12">
+
+      <!-- Form starts -->
+      <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+
+        <!-- Add items dynamically-->
+        <div class="group-gap" formArrayName="addDynamicElement">
+          <h5 class="mb-3">Add Products</h5>
+          <div class="mb-3">
+            <button type="button" class="btn btn-sm btn-success mb-3 btn-block" (click)="addItems()">Add Items</button>
+            <ul class="subjectList">
+              <li *ngFor="let item of addDynamicElement.controls; let i = index">
+                <input type="text" class="form-control" [formControlName]="i">
+              </li>
+            </ul>
+          </div>
+
+          <!-- Submit Button -->
+          <button type="submit" class="btn btn-danger btn-lg btn-block">Submit Form</button>
+        </div>
+
+      </form><!-- Form ends -->
+
+    </div>
+  </div>
+</div>
